@@ -2,7 +2,7 @@
 Algoritmos de *machine learning* para classificação binária de partículas.
 
 ## Machine Learning
-A plataforma web de aprendizagem interativa freeCodeCamp publicou o excelente curso desenvolvido pela engenheira e cientista graduada pelo MIT, Kylie Ying, intitulado Machine Learning for Everybody – Full Course.
+A plataforma web de aprendizagem interativa [freeCodeCamp](https://www.freecodecamp.org/) publicou o excelente curso desenvolvido pela engenheira e cientista graduada pelo MIT, [Kylie Ying](https://www.kylieying.com/), intitulado **Machine Learning for Everybody** – [Full Course](https://www.youtube.com/watch?v=i_LwzRVP7bg). 
 
 ## Classificação binária
 No início do curso, foi abordado um problema de aprendizado supervisionado, para classificação binária, em que o modelo aprende com dados de treinamento devidamente rotulados, para no fim ser colocado à prova com os dados de teste, após o ajuste com dados de validação. O modelo deve classificar as partículas, a partir das características fornecidas pelas features, em raios gama(sinal) ou hadron(fundo).
@@ -12,7 +12,11 @@ Foram utilizados diversos algoritmos de classificação.
 ## Dataset:
 Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.
 
-Donated by: P. Savicky Institute of Computer Science, AS of CR Czech Republic savicky '@' cs.cas.cz
+Donated by:
+P. Savicky
+Institute of Computer Science, AS of CR
+Czech Republic
+savicky '@' cs.cas.cz
 
 O dataset MAGIC Gamma Telescope foi gerado com o método de simulação denominado Monte Carlo, utilizado para reproduzir indiretamente as características dos raios gama que teriam provocado as chuvas eletromagnéticas na atmosfera. Esse método é particularmente eficaz para modelar sistemas complexos e estocásticos, como as interações de partículas de alta energia na atmosfera, permitindo a simulação detalhada dos processos físicos envolvidos e a coleta de dados sobre as características esperadas das chuvas eletromagnéticas geradas pelos raios gama.
 
