@@ -236,7 +236,7 @@ df.head()
 </table>
 </div>
 ```
-:::
+
 
 ## Transformamos a variável categórica em numérica
 
@@ -358,9 +358,7 @@ df.head()
 ```
 
 ## Visualizamos as distribuições
-:::
 
-::: {#65289c79-d9be-4d49-9e57-dfdf6023efe8 .cell .markdown}
 **Criamos uma matriz de gráficos de dispersão:**
 
 ``` python
