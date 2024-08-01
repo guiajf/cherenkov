@@ -1,3 +1,5 @@
+# Projeto de classificação de dados: modelos, avaliação e desempenho
+
 ## Machine Learning
 
 A plataforma web de aprendizagem interativa
@@ -16,7 +18,7 @@ prova com os dados de teste, após o ajuste com dados de validação. O
 modelo deve classificar as partículas, a partir das características
 fornecidas pelas *features*, em raios gama(*sinal*) ou hadron(*fundo*).
 
-Foram utilizados diversos algoritmos de classificação.
+Foram utilizados diversos algoritmos de classificação, fornecidos pela biblioteca de aprendizado de máquina *scikit-learn*, em Python.
 
 ### Dataset:
 
