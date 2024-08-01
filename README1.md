@@ -1,5 +1,4 @@
-# Classificação binária: 
-# *modelos, avaliação e desempenho*
+# Classificação binária:*modelos, avaliação e desempenho*
 
 ## Machine Learning
 
