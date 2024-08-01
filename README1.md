@@ -17,22 +17,16 @@ modelo deve classificar as partículas, a partir das características
 fornecidas pelas *features*, em raios gama(*sinal*) ou hadron(*fundo*).
 
 Foram utilizados diversos algoritmos de classificação.
-:::
 
-::: {#d6f6a74a-3b3e-4c34-b048-7d469bd52984 .cell .markdown}
 ### Dataset:
-:::
 
-::: {#20610b7d-3d37-4174-aeb7-e110fc092af3 .cell .markdown}
 Dua, D. and Graff, C. (2019). UCI Machine Learning Repository
 \[<http://archive.ics.uci.edu/ml>\]. Irvine, CA: University of
 California, School of Information and Computer Science.
 
 Donated by: P. Savicky Institute of Computer Science, AS of CR Czech
 Republic savicky \'@\' cs.cas.cz
-:::
 
-::: {#c4dc7065-d1a9-43fb-9599-89b3bbafef00 .cell .markdown}
 O dataset *MAGIC Gamma Telescope* foi gerado com o método de simulação
 denominado *Monte Carlo*, utilizado para reproduzir indiretamente as
 características dos raios gama que teriam provocado as chuvas
@@ -45,13 +39,9 @@ raios gama.
 
 O artigo original que relata a simulação pode ser obtido em:
 <https://inspirehep.net/literature/469835>
-:::
 
-::: {#70e99956-6a8e-4cce-bc87-433aaabc4106 .cell .markdown}
 ## Radiação Cherenkov
-:::
 
-::: {#457c5f2a-3876-4001-b39c-4ba255b2294b .cell .markdown}
 Os telescópios Cherenkov são baseados no solo e os raios gama são
 absorvidos pela atmosfera da Terra antes de alcançarem a superfície.
 Esses telescópios detectam a radiação Cherenkov produzida quando os
@@ -94,13 +84,9 @@ onde a interferência atmosférica é mínima.
 Esses instrumentos foram projetados para operar fora da influência da
 densa atmosfera terrestre, permitindo a detecção direta e o estudo dos
 raios gama provenientes de fontes cósmicas.
-:::
 
-::: {#a56de4cc-30ae-4d6d-976c-1ceacd945c8e .cell .markdown}
 ## Processo de modelagem padrão
-:::
 
-::: {#372bb491-b5b6-45ce-bf96-60ad58dbf0b4 .cell .markdown}
 Em um processo de modelagem padrão, utilizamos dados de validação para
 ajustar o modelo, especialmente quando estamos testando diferentes
 algoritmos ou ajustando hiperparâmetros. Somente após escolher o melhor
@@ -109,27 +95,19 @@ teste para avaliar a performance final.
 
 Um fluxo de trabalho adequado deve garantir que os dados de validação
 sejam usados adequadamente para ajustar o modelo.
-:::
 
-::: {#a997e5c0-a9ee-4cea-a67a-fe8c5b0ab95f .cell .markdown}
 Ao usar os dados de validação, você pode ajustar hiperparâmetros e
 selecionar o melhor modelo sem contaminar os dados de teste, que devem
 ser usados apenas para a avaliação final. Se você estiver testando
 múltiplos modelos, pode repetir o processo de treinamento e validação
 para cada modelo, comparando seus desempenhos nos dados de validação
 para decidir qual modelo será avaliado nos dados de teste.
-:::
 
-::: {#ce11b42d-bfe8-4926-8d9e-21df2a7f8dd3 .cell .markdown}
 De outra sorte, para que subdividir o dataset em *treinamento*,
 *validação* e *teste*?
-:::
 
-::: {#f8f2ca72-f467-43ae-a073-05235e162bcd .cell .markdown}
 ## Importamos as bilbiotecas
-:::
 
-::: {#de2021c3-ec76-4f03-a299-5b5b3d4f4908 .cell .code execution_count="1"}
 ``` python
 import numpy as np
 import pandas as pd
@@ -140,22 +118,17 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_selection import SelectKBest, f_classif
 from sklearn.naive_bayes import GaussianNB
 ```
-:::
 
-::: {#165e53ee-8517-42f4-9eb3-1c9bdb745669 .cell .markdown}
 ## Carregamos o dataset
 
 ### Renomeamos as colunas
-:::
 
-::: {#7a0d624e-720f-434f-af63-5b3d47a78105 .cell .code execution_count="2"}
 ``` python
 cols = ["fLength", "fWidth", "fSize", "fConc", "fConc1", "fAsym", "fM3Long", "fM3Trans", "fAlpha", "fDist", "class"]
 df = pd.read_csv("magic04.data", names=cols)
 df.head()
 ```
 
-::: {.output .execute_result execution_count="2"}
 ```{=html}
 <div>
 <style scoped>
@@ -264,19 +237,13 @@ df.head()
 </div>
 ```
 :::
-:::
 
-::: {#39e6ca56-323e-4176-8835-fba5da88fec7 .cell .markdown}
 ## Transformamos a variável categórica em numérica
-:::
 
-::: {#44fdeb68-fa8d-4d68-bb2f-b8295c980061 .cell .code execution_count="3"}
 ``` python
 df["class"] = (df["class"] == "g").astype(int)
 ```
-:::
 
-::: {#ec096d25-4f81-4453-b981-f49b9fc5ebd5 .cell .code execution_count="4"}
 ``` python
 df.head()
 ```
