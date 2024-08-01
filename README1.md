@@ -40,7 +40,7 @@ características esperadas das chuvas eletromagnéticas geradas pelos
 raios gama.
 
 O artigo original que relata a simulação pode ser obtido em:
-<https://inspirehep.net/literature/469835>
+<https://inspirehep.net/literature/469835>.
 
 ## Radiação Cherenkov
 
