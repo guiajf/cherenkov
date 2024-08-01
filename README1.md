@@ -826,9 +826,7 @@ print(classification_report(y_test, y_test_pred))
 
 ::: {#847df0da-a551-43de-8465-9597c9d3691a .cell .markdown}
 ## Principais métricas
-:::
 
-::: {#b3b3d924-d402-4ae9-8375-25cb2062e045 .cell .markdown}
 A seguir, explicamos os principais indicadores fornecidos pelo
 *classification_report* do *sklearn*:
 
@@ -865,19 +863,17 @@ $$ \text{Support} = \text{Número de exemplos da classe} $$
 $$ \text{Acurácia} = \frac{\text{Verdadeiros Positivos (VP)} + \text{Verdadeiros Negativos (VN)}}{\text{Total de Exemplos}} $$
 
 ​
-:::
-
-::: {#65bd3845-8f4c-498e-9dcd-308325be0e48 .cell .markdown}
 ### Indicadores do modelo Random Forest, na fase de teste
-:::
 
-::: {#a59676b7-d273-4d21-ae51-b819e3ad8627 .cell .markdown}
 **Classe 0:**
 
 Precisão: 0.84 (84% das previsões para a classe 0 estavam
-corretas)`<br>`{=html} Recall: 0.78 (78% das instâncias reais da classe
-0 foram corretamente identificadas)`<br>`{=html} F1-score: 0.81 (média
-harmônica de precisão e recall para a classe 0)`<br>`{=html} Support:
+corretas)<br> 
+Recall: 0.78 (78% das instâncias reais da classe
+0 foram corretamente identificadas)<br>
+F1-score: 0.81 (média
+harmônica de precisão e recall para a classe 0)<br> 
+Support:
 1357 (há 1357 instâncias reais da classe 0 no dataset de teste)
 
 **Classe 1:**
