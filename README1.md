@@ -883,24 +883,30 @@ harmônica de precisão e recall para a classe 0)`<br>`{=html} Support:
 **Classe 1:**
 
 Precisão: 0.88 (88% das previsões para a classe 1 estavam
-corretas)`<br>`{=html} Recall: 0.92 (92% das instâncias reais da classe
-1 foram corretamente identificadas)`<br>`{=html} F1-score: 0.90 (média
-harmônica de precisão e recall para a classe 1)`<br>`{=html} Support:
+corretas)<br>
+Recall: 0.92 (92% das instâncias reais da classe
+1 foram corretamente identificadas)<br>
+F1-score: 0.90 (média
+harmônica de precisão e recall para a classe 1)<br>
+Support:
 2447 (há 2499 instâncias reais da classe 1 no dataset de
-teste)`<br>`{=html}
+teste)
 
 Acurácia Geral: 0.87 (87% das previsões totais estavam corretas)
 
 **Macro Average (média das métricas por classe):**
 
-Precisão: 0.86`<br>`{=html} Recall: 0.85`<br>`{=html} F1-score: 0.86
+Precisão: 0.86<br>
+Recall: 0.85<br>
+F1-score: 0.86
 
 **Weighted Average** (média ponderada das métricas, considerando o
-suporte de cada classe):`<br>`{=html}
+suporte de cada classe):
 
-Precisão: 0.87`<br>`{=html} Recall: 0.87`<br>`{=html} F1-score: 0.87
+Precisão: 0.87<br>
+Recall: 0.87<br>
+F1-score: 0.87
 
 Esses indicadores mostram que o modelo RandomForestClassifier teve um
 bom desempenho, com uma acurácia de 87% e valores altos de precisão,
 recall e F1-score para ambas as classes.
-:::
