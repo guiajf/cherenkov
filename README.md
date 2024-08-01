@@ -59,6 +59,7 @@ from imblearn.over_sampling import RandomOverSampler
 from sklearn.model_selection import train_test_split
 from sklearn.feature_selection import SelectKBest, f_classif
 from sklearn.naive_bayes import GaussianNB
+``
 
 ## Carregamos o dataset
 ### Renomeamos as colunas
@@ -67,6 +68,7 @@ from sklearn.naive_bayes import GaussianNB
 cols = ["fLength", "fWidth", "fSize", "fConc", "fConc1", "fAsym", "fM3Long", "fM3Trans", "fAlpha", "fDist", "class"]
 df = pd.read_csv("magic04.data", names=cols)
 df.head()
+```
 
 
 
