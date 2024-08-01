@@ -60,4 +60,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_selection import SelectKBest, f_classif
 from sklearn.naive_bayes import GaussianNB
 
+## Carregamos o dataset
+### Renomeamos as colunas
+
+```
+
+
 
