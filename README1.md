@@ -393,62 +393,38 @@ corr = df.drop(labels='class',axis=1).corr()
 sns.heatmap(data=corr,xticklabels=corr.columns,yticklabels=corr.columns,linewidths=0.5,annot=True)
 ```
 
-::: {.output .execute_result execution_count="6"}
-    <Axes: >
-:::
-
-::: {.output .display_data}
 ![](vertopal_b542f81007a544e69d706e1b961baf8d/af5a587f19485d9611425279a4826f6aab7b12e3.png)
-:::
-:::
 
-::: {#be271374-ca5c-4c07-b0df-b7f2bbb14e26 .cell .markdown}
 ### Separação do dataset em treinamento, validação e teste
-:::
 
-::: {#19f773c0-d9a5-4613-9722-cf917e5c3da8 .cell .code execution_count="7"}
 ``` python
 import warnings
 warnings.filterwarnings('ignore', category=FutureWarning)
 
 train, valid, test = np.split(df.sample(frac=1), [int(0.6*len(df)), int(0.8*len(df))])
 ```
-:::
 
-::: {#c660a39b-79f3-4873-b568-161098ba6730 .cell .markdown}
 ### Conferimos o balanceamento dos dados
-:::
 
-::: {#b9dd5192-7423-41cf-9d6f-7e64830cc096 .cell .code execution_count="8"}
 ``` python
 print(len(train[train["class"]==1]))
 ```
 
-::: {.output .stream .stdout}
-    7415
-:::
-:::
 
-::: {#6d9dec7c-4fbe-453d-a00d-c08736e9b4b2 .cell .code execution_count="9"}
+    7415
+
 ``` python
 print(len(train[train["class"]==0]))
 ```
 
-::: {.output .stream .stdout}
+
     3997
-:::
-:::
 
-::: {#b2ba3a91-1286-4ca0-9ebe-f1b059c4225a .cell .markdown}
 ## Padronização e balanceamento dos dados
-:::
 
-::: {#98e64b19-a8d9-4bbf-bf6d-50d08804d519 .cell .markdown}
 Além da padronização dos dados, utilizamos o método *RandomOverSampler*
 para reamostragem dos dados desbalanceados.
-:::
 
-::: {#962e0d72-99d5-4933-a8c9-a2da343e4bcb .cell .code execution_count="10"}
 ``` python
     def scale_dataset(dataframe, oversample=False):
       X = dataframe[dataframe.columns[:-1]].values
@@ -465,64 +441,52 @@ para reamostragem dos dados desbalanceados.
     
       return data, X, y
 ```
-:::
 
-::: {#d58e2ad7-596d-41cd-bf41-6a8777a4d15a .cell .code execution_count="11"}
+
 ``` python
 train, X_train, y_train = scale_dataset(train, oversample=True)
 valid, X_valid, y_valid = scale_dataset(valid, oversample=False)
 test, X_test, y_test = scale_dataset(test, oversample=False)
 ```
-:::
 
-::: {#832b5114-c739-4060-b441-b5294987d207 .cell .markdown}
 # Algoritmos de classificação
-:::
 
-::: {#326a5c3d-a10b-452a-954f-abc1a2ab4e13 .cell .markdown}
 ## KNN
-:::
 
-::: {#6583be2a-bcbd-4449-b9d2-2c6e91592c3e .cell .markdown}
 O KNN é um algoritmo de aprendizado supervisionado que classifica uma
 nova amostra com base na maioria dos \"vizinhos\" mais próximos. Neste
 caso, utilizamos `k=5`, o que significa que a classificação de uma nova
 amostra será baseada nas 5 amostras mais próximas no espaço dos
 recursos.
-:::
 
-::: {#0e3ac17b-022c-4b0c-bf96-0f7a4520bf63 .cell .code execution_count="12"}
+
 ``` python
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report
 ```
-:::
 
-::: {#01ec929d-9a44-4786-b8be-8d85b0a5043e .cell .code execution_count="13"}
+
 ``` python
 knn_model = KNeighborsClassifier(n_neighbors=5)
 knn_model.fit(X_train, y_train)
 ```
 
-::: {.output .execute_result execution_count="13"}
+
 ```{=html}
 <style>#sk-container-id-1 {color: black;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KNeighborsClassifier()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">KNeighborsClassifier</label><div class="sk-toggleable__content"><pre>KNeighborsClassifier()</pre></div></div></div></div></div>
 ```
-:::
-:::
 
-::: {#bd53b898-2f74-4750-b962-e72ab7e4e3ff .cell .code execution_count="14"}
+
 ``` python
 y_valid_pred = knn_model.predict(X_valid)
 ```
-:::
 
-::: {#753e721b-68b0-4000-94cb-e108d28ca7e2 .cell .code execution_count="15"}
+
 ``` python
 print(classification_report(y_valid, y_valid_pred))
 ```
 
-::: {.output .stream .stdout}
+
                   precision    recall  f1-score   support
 
                0       0.74      0.72      0.73      1334
@@ -531,39 +495,32 @@ print(classification_report(y_valid, y_valid_pred))
         accuracy                           0.81      3804
        macro avg       0.80      0.79      0.79      3804
     weighted avg       0.81      0.81      0.81      3804
-:::
-:::
 
-::: {#5d79655c-a7eb-46c0-b7b1-b70014e16be6 .cell .markdown}
+
 # Naive Bayes
-:::
 
-::: {#4ba0c84f-6df5-4740-b1cb-3869e8291598 .cell .markdown}
 O Naive Bayes é baseado no teorema de Bayes, que assume independência
 entre os predictores. Este modelo é útil para problemas de classificação
 binária e multiclasse.
-:::
 
-::: {#5071cf78-b7fd-424c-bfe3-bcea071a0dbe .cell .code execution_count="16"}
+
 ``` python
 from sklearn.naive_bayes import GaussianNB
 ```
-:::
 
-::: {#fd0ebf28-26c6-4a0e-b912-472069e65f45 .cell .code execution_count="17"}
+
 ``` python
 nb_model = GaussianNB()
 nb_model = nb_model.fit(X_train, y_train)
 ```
-:::
 
-::: {#97e135e1-c1b2-413d-82ec-b33a295e8f6e .cell .code execution_count="18"}
+
 ``` python
 y_valid_pred = nb_model.predict(X_valid)
 print(classification_report(y_valid, y_valid_pred))
 ```
 
-::: {.output .stream .stdout}
+
                   precision    recall  f1-score   support
 
                0       0.69      0.40      0.50      1334
@@ -572,35 +529,29 @@ print(classification_report(y_valid, y_valid_pred))
         accuracy                           0.73      3804
        macro avg       0.71      0.65      0.66      3804
     weighted avg       0.72      0.73      0.70      3804
-:::
-:::
 
-::: {#7c182468-36e0-423a-ad9f-5aaf534061b5 .cell .code execution_count="19"}
+
 ``` python
 # Log Regression
 ```
-:::
 
-::: {#33bb14e8-a01f-448d-9506-d6538d6c0a52 .cell .code execution_count="20"}
 ``` python
 from sklearn.linear_model import LogisticRegression
 ```
-:::
 
-::: {#c4ac585d-f725-4447-8495-fc780c912e58 .cell .code execution_count="21"}
+
 ``` python
 lg_model = LogisticRegression()
 lg_model = lg_model.fit(X_train, y_train)
 ```
-:::
 
-::: {#7b9f2071-8c90-4444-9c05-cd955187c89a .cell .code execution_count="22"}
+
 ``` python
 y_valid_pred = lg_model.predict(X_valid)
 print(classification_report(y_valid, y_valid_pred))
 ```
 
-::: {.output .stream .stdout}
+
                   precision    recall  f1-score   support
 
                0       0.69      0.72      0.71      1334
@@ -609,39 +560,32 @@ print(classification_report(y_valid, y_valid_pred))
         accuracy                           0.79      3804
        macro avg       0.77      0.77      0.77      3804
     weighted avg       0.79      0.79      0.79      3804
-:::
-:::
 
-::: {#f3b98d23-65df-4f93-a13a-b07ac4b313de .cell .markdown}
+
 # SVM
-:::
 
-::: {#39b956f0-da5b-4110-821f-d4cf9b26af02 .cell .markdown}
 O SVM é um algoritmo que encontra um hiperplano que melhor separa as
 classes de dados. Utilizamos o SVM para garantir uma separação máxima
 entre as classes.
-:::
 
-::: {#d6ecdc3d-bc7c-4846-9d1f-28d1f105008a .cell .code execution_count="23"}
+
 ``` python
 from sklearn.svm import SVC
 ```
-:::
 
-::: {#a89fb912-9de4-4729-907b-3e16422706df .cell .code execution_count="24"}
+
 ``` python
 svm_model = SVC()
 svm_model = svm_model.fit(X_train, y_train)
 ```
-:::
 
-::: {#eb5bb443-cd98-4fd2-ba17-83545e5b716b .cell .code execution_count="25"}
+
 ``` python
 y_valid_pred = svm_model.predict(X_valid)
 print(classification_report(y_valid, y_valid_pred))
 ```
 
-::: {.output .stream .stdout}
+
                   precision    recall  f1-score   support
 
                0       0.81      0.80      0.81      1334
@@ -650,46 +594,40 @@ print(classification_report(y_valid, y_valid_pred))
         accuracy                           0.87      3804
        macro avg       0.85      0.85      0.85      3804
     weighted avg       0.87      0.87      0.87      3804
-:::
-:::
+
+
 
 ::: {#843b2a1c-8b59-4638-a7a0-69e7e9f05ba0 .cell .markdown}
 # Logistic Regression
-:::
 
-::: {#81eb4b0e-4099-4644-8179-a8340fc394d3 .cell .markdown}
 A Regressão Logística é um modelo estatístico utilizado para problemas
 de classificação binária. Ela estima a probabilidade de uma variável
 dependente pertencer a uma determinada classe com base em uma ou mais
 variáveis independentes.
-:::
 
-::: {#af014e04-e362-4ad0-87c8-9b515d767739 .cell .code execution_count="26"}
+
 ``` python
 from sklearn.linear_model import LogisticRegression
 ```
-:::
 
-::: {#76f5e578-2e51-4d65-af34-70d9d4ee64e5 .cell .code execution_count="27"}
+
 ``` python
 logreg_model = LogisticRegression()
 logreg_model.fit(X_train, y_train)
 ```
 
-::: {.output .execute_result execution_count="27"}
+
 ```{=html}
 <style>#sk-container-id-2 {color: black;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LogisticRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">LogisticRegression</label><div class="sk-toggleable__content"><pre>LogisticRegression()</pre></div></div></div></div></div>
 ```
-:::
-:::
 
-::: {#a2fa405c-2291-463d-a06e-d2f219249d10 .cell .code execution_count="28"}
+
 ``` python
 y_valid_pred = logreg_model.predict(X_valid)
 print(classification_report(y_valid, y_valid_pred))
 ```
 
-::: {.output .stream .stdout}
+
                   precision    recall  f1-score   support
 
                0       0.69      0.72      0.71      1334
@@ -698,46 +636,37 @@ print(classification_report(y_valid, y_valid_pred))
         accuracy                           0.79      3804
        macro avg       0.77      0.77      0.77      3804
     weighted avg       0.79      0.79      0.79      3804
-:::
-:::
 
-::: {#874a5f2b-d97e-4ae0-8814-607a3b93ae7e .cell .markdown}
+
 # Random Forest
-:::
 
-::: {#5019fa05-0bd5-4307-9e36-48e6764bb77a .cell .markdown}
 O Random Forest é um conjunto de múltiplas árvores de decisão, onde cada
 árvore é treinada com uma amostra diferente do dataset. Ele é conhecido
 por melhorar a precisão e reduzir o overfitting ao combinar as previsões
 de várias árvores.
-:::
 
-::: {#6ab3ed27-2164-4d97-93ce-e707c5715fe9 .cell .code execution_count="29"}
+
 ``` python
 from sklearn.ensemble import RandomForestClassifier
 ```
-:::
 
-::: {#785a4011-de47-48ea-bd12-3093f2af6c79 .cell .code execution_count="30"}
+
 ``` python
 rf_model = RandomForestClassifier(n_estimators=100)
 rf_model.fit(X_train, y_train)
 ```
 
-::: {.output .execute_result execution_count="30"}
+
 ```{=html}
 <style>#sk-container-id-3 {color: black;}#sk-container-id-3 pre{padding: 0;}#sk-container-id-3 div.sk-toggleable {background-color: white;}#sk-container-id-3 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-3 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-3 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-3 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-3 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-3 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-3 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-3 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-3 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-3 div.sk-item {position: relative;z-index: 1;}#sk-container-id-3 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-3 div.sk-item::before, #sk-container-id-3 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-3 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-3 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-3 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-3 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-3 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-3 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-3 div.sk-label-container {text-align: center;}#sk-container-id-3 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-3 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>RandomForestClassifier()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" checked><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">RandomForestClassifier</label><div class="sk-toggleable__content"><pre>RandomForestClassifier()</pre></div></div></div></div></div>
 ```
-:::
-:::
 
-::: {#689f9e70-786a-46db-888b-14bc66ea20c6 .cell .code execution_count="31"}
 ``` python
 y_valid_pred = rf_model.predict(X_valid)
 print(classification_report(y_valid, y_valid_pred))
 ```
 
-::: {.output .stream .stdout}
+
                   precision    recall  f1-score   support
 
                0       0.86      0.80      0.83      1334
@@ -746,46 +675,35 @@ print(classification_report(y_valid, y_valid_pred))
         accuracy                           0.88      3804
        macro avg       0.88      0.86      0.87      3804
     weighted avg       0.88      0.88      0.88      3804
-:::
-:::
 
-::: {#9a3e603d-e8e9-46d7-bea9-6430b5a8984b .cell .markdown}
+
 # AdaBoost
-:::
 
-::: {#104f2484-5f77-470b-91d4-1ce31ea815af .cell .markdown}
 O AdaBoost é um algoritmo de ensemble que combina a performance de
 múltiplos classificadores fracos para formar um classificador forte. Ele
 ajusta iterativamente os pesos das instâncias para focar nos erros mais
 difíceis.
-:::
 
-::: {#6385d43d-52b8-43c7-8088-1f71b3628fb1 .cell .code execution_count="32"}
+
 ``` python
 from sklearn.ensemble import AdaBoostClassifier
 ```
-:::
 
-::: {#d054fb07-ba6e-4ded-be8f-d7cf73e7f048 .cell .code execution_count="33"}
 ``` python
 ada_model = AdaBoostClassifier(n_estimators=50)
 ada_model.fit(X_train, y_train)
 ```
 
-::: {.output .execute_result execution_count="33"}
+
 ```{=html}
 <style>#sk-container-id-4 {color: black;}#sk-container-id-4 pre{padding: 0;}#sk-container-id-4 div.sk-toggleable {background-color: white;}#sk-container-id-4 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-4 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-4 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-4 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-4 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-4 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-4 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-4 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-4 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-4 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-4 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-4 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-4 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-4 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-4 div.sk-item {position: relative;z-index: 1;}#sk-container-id-4 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-4 div.sk-item::before, #sk-container-id-4 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-4 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-4 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-4 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-4 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-4 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-4 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-4 div.sk-label-container {text-align: center;}#sk-container-id-4 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-4 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-4" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>AdaBoostClassifier()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" checked><label for="sk-estimator-id-4" class="sk-toggleable__label sk-toggleable__label-arrow">AdaBoostClassifier</label><div class="sk-toggleable__content"><pre>AdaBoostClassifier()</pre></div></div></div></div></div>
 ```
-:::
-:::
 
-::: {#35ed53bb-b012-4368-9f5f-3c2a8be04157 .cell .code execution_count="34"}
 ``` python
 y_valid_pred = ada_model.predict(X_valid)
 print(classification_report(y_valid, y_valid_pred))
 ```
 
-::: {.output .stream .stdout}
                   precision    recall  f1-score   support
 
                0       0.72      0.82      0.77      1334
@@ -794,19 +712,12 @@ print(classification_report(y_valid, y_valid_pred))
         accuracy                           0.83      3804
        macro avg       0.81      0.83      0.82      3804
     weighted avg       0.84      0.83      0.83      3804
-:::
-:::
 
-::: {#bbe36eaa-c3c3-42ef-834b-6123e39c7722 .cell .markdown}
 ## Escolha do modelo para teste
-:::
 
-::: {#c90a6999-ca69-4a0e-b8be-b9bd7ae8d412 .cell .markdown}
 Escolhemos o modelo que apresentou melhor desempenho durante a fase de
 validação, para submeter os dados de teste.
-:::
 
-::: {#a5349798-19d3-457b-815f-0ec9c9a37d0c .cell .code execution_count="35"}
 ``` python
 y_test_pred = rf_model.predict(X_test)
 print(classification_report(y_test, y_test_pred))
