@@ -1,4 +1,4 @@
-# Machine Learning
+## Machine Learning
 
 A plataforma web de aprendizagem interativa
 [freeCodeCamp](https://www.freecodecamp.org/) publicou o excelente curso
@@ -276,7 +276,7 @@ print(classification_report(y_valid, y_valid_pred))
     weighted avg       0.81      0.81      0.81      3804
 
 
-# Naive Bayes
+## Naive Bayes
 
 O Naive Bayes é baseado no teorema de Bayes, que assume independência
 entre os predictores. Este modelo é útil para problemas de classificação
@@ -311,7 +311,7 @@ print(classification_report(y_valid, y_valid_pred))
 
 
 
-# SVM
+## SVM
 
 O SVM é um algoritmo que encontra um hiperplano que melhor separa as
 classes de dados. Utilizamos o SVM para garantir uma separação máxima
@@ -346,7 +346,7 @@ print(classification_report(y_valid, y_valid_pred))
 
 
 
-# Logistic Regression
+## Logistic Regression
 
 A Regressão Logística é um modelo estatístico utilizado para problemas
 de classificação binária. Ela estima a probabilidade de uma variável
@@ -381,7 +381,7 @@ print(classification_report(y_valid, y_valid_pred))
     weighted avg       0.79      0.79      0.79      3804
 
 
-# Random Forest
+## Random Forest
 
 O Random Forest é um conjunto de múltiplas árvores de decisão, onde cada
 árvore é treinada com uma amostra diferente do dataset. Ele é conhecido
@@ -416,7 +416,7 @@ print(classification_report(y_valid, y_valid_pred))
     weighted avg       0.88      0.88      0.88      3804
 
 
-# AdaBoost
+## AdaBoost
 
 O AdaBoost é um algoritmo de ensemble que combina a performance de
 múltiplos classificadores fracos para formar um classificador forte. Ele
@@ -510,28 +510,28 @@ $$ \text{Acurácia} = \frac{\text{Verdadeiros Positivos (VP)} + \text{Verdadeiro
 
 **Classe 0:**
 
-Precisão: 0.84 (84% das previsões para a classe 0 estavam
+*Precisão*: 0.84 (84% das previsões para a classe 0 estavam
 corretas)<br> 
-Recall: 0.78 (78% das instâncias reais da classe
+*Recall*: 0.78 (78% das instâncias reais da classe
 0 foram corretamente identificadas)<br>
-F1-score: 0.81 (média
+*F1-score*: 0.81 (média
 harmônica de precisão e recall para a classe 0)<br> 
-Support:
+*Support*:
 1357 (há 1357 instâncias reais da classe 0 no dataset de teste)
 
 **Classe 1:**
 
-Precisão: 0.88 (88% das previsões para a classe 1 estavam
+*Precisão*: 0.88 (88% das previsões para a classe 1 estavam
 corretas)<br>
-Recall: 0.92 (92% das instâncias reais da classe
+*Recall*: 0.92 (92% das instâncias reais da classe
 1 foram corretamente identificadas)<br>
-F1-score: 0.90 (média
+*F1-score*: 0.90 (média
 harmônica de precisão e recall para a classe 1)<br>
-Support:
+*Support*:
 2447 (há 2499 instâncias reais da classe 1 no dataset de
 teste)
 
-Acurácia Geral: 0.87 (87% das previsões totais estavam corretas)
+**Acurácia Geral**: 0.87 (87% das previsões totais estavam corretas)
 
 **Macro Average (média das métricas por classe):**
 
@@ -542,10 +542,10 @@ F1-score: 0.86
 **Weighted Average** (média ponderada das métricas, considerando o
 suporte de cada classe):
 
-Precisão: 0.87<br>
-Recall: 0.87<br>
-F1-score: 0.87
+*Precisão*: 0.87<br>
+*Recall*: 0.87<br>
+*F1-score*: 0.87
 
-Esses indicadores mostram que o modelo RandomForestClassifier teve um
-bom desempenho, com uma acurácia de 87% e valores altos de precisão,
-recall e F1-score para ambas as classes.
+Esses indicadores mostram que o modelo **RandomForestClassifier** teve um
+bom desempenho, com uma *acurácia* de 87% e valores altos de *precisão*,
+*recall* e *F1-score* para ambas as classes.
