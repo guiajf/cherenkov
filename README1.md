@@ -531,36 +531,6 @@ print(classification_report(y_valid, y_valid_pred))
     weighted avg       0.72      0.73      0.70      3804
 
 
-``` python
-# Log Regression
-```
-
-``` python
-from sklearn.linear_model import LogisticRegression
-```
-
-
-``` python
-lg_model = LogisticRegression()
-lg_model = lg_model.fit(X_train, y_train)
-```
-
-
-``` python
-y_valid_pred = lg_model.predict(X_valid)
-print(classification_report(y_valid, y_valid_pred))
-```
-
-
-                  precision    recall  f1-score   support
-
-               0       0.69      0.72      0.71      1334
-               1       0.85      0.83      0.84      2470
-
-        accuracy                           0.79      3804
-       macro avg       0.77      0.77      0.77      3804
-    weighted avg       0.79      0.79      0.79      3804
-
 
 # SVM
 
@@ -597,7 +567,6 @@ print(classification_report(y_valid, y_valid_pred))
 
 
 
-::: {#843b2a1c-8b59-4638-a7a0-69e7e9f05ba0 .cell .markdown}
 # Logistic Regression
 
 A Regressão Logística é um modelo estatístico utilizado para problemas
@@ -612,8 +581,8 @@ from sklearn.linear_model import LogisticRegression
 
 
 ``` python
-logreg_model = LogisticRegression()
-logreg_model.fit(X_train, y_train)
+lg_model = LogisticRegression()
+lg_model.fit(X_train, y_train)
 ```
 
 
@@ -623,7 +592,7 @@ logreg_model.fit(X_train, y_train)
 
 
 ``` python
-y_valid_pred = logreg_model.predict(X_valid)
+y_valid_pred = lg_model.predict(X_valid)
 print(classification_report(y_valid, y_valid_pred))
 ```
 
