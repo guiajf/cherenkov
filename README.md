@@ -50,6 +50,7 @@ De outra sorte, para que subdividir o dataset em treinamento, validação e test
 
 ## Importamos as bilbiotecas
 
+```
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
