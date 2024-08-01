@@ -367,7 +367,7 @@ dados = df.iloc[:, :-1].copy()
 sns.pairplot(data=dados)
 ```
 
-![](vertopal_b542f81007a544e69d706e1b961baf8d/b231f66556e3a8ed62130f3371cc491f9711eb34.png)
+![](dispersao.png)
 
 **Calculamos a matriz de correlação:**
 
@@ -376,7 +376,7 @@ corr = df.drop(labels='class',axis=1).corr()
 sns.heatmap(data=corr,xticklabels=corr.columns,yticklabels=corr.columns,linewidths=0.5,annot=True)
 ```
 
-![](vertopal_b542f81007a544e69d706e1b961baf8d/af5a587f19485d9611425279a4826f6aab7b12e3.png)
+![](correlacao.png)
 
 ### Separação do dataset em treinamento, validação e teste
 
