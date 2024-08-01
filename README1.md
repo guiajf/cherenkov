@@ -812,7 +812,7 @@ y_test_pred = rf_model.predict(X_test)
 print(classification_report(y_test, y_test_pred))
 ```
 
-::: 
+
                   precision    recall  f1-score   support
 
                0       0.84      0.78      0.81      1357
@@ -821,7 +821,7 @@ print(classification_report(y_test, y_test_pred))
         accuracy                           0.87      3804
        macro avg       0.86      0.85      0.86      3804
     weighted avg       0.87      0.87      0.87      3804
-:::
+
 ## Principais métricas
 
 A seguir, explicamos os principais indicadores fornecidos pelo
