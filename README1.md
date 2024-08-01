@@ -150,113 +150,13 @@ df.head()
 ```
 
 
-```{=html}
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>fLength</th>
-      <th>fWidth</th>
-      <th>fSize</th>
-      <th>fConc</th>
-      <th>fConc1</th>
-      <th>fAsym</th>
-      <th>fM3Long</th>
-      <th>fM3Trans</th>
-      <th>fAlpha</th>
-      <th>fDist</th>
-      <th>class</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>28.7967</td>
-      <td>16.0021</td>
-      <td>2.6449</td>
-      <td>0.3918</td>
-      <td>0.1982</td>
-      <td>27.7004</td>
-      <td>22.0110</td>
-      <td>-8.2027</td>
-      <td>40.0920</td>
-      <td>81.8828</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>31.6036</td>
-      <td>11.7235</td>
-      <td>2.5185</td>
-      <td>0.5303</td>
-      <td>0.3773</td>
-      <td>26.2722</td>
-      <td>23.8238</td>
-      <td>-9.9574</td>
-      <td>6.3609</td>
-      <td>205.2610</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>162.0520</td>
-      <td>136.0310</td>
-      <td>4.0612</td>
-      <td>0.0374</td>
-      <td>0.0187</td>
-      <td>116.7410</td>
-      <td>-64.8580</td>
-      <td>-45.2160</td>
-      <td>76.9600</td>
-      <td>256.7880</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>23.8172</td>
-      <td>9.5728</td>
-      <td>2.3385</td>
-      <td>0.6147</td>
-      <td>0.3922</td>
-      <td>27.2107</td>
-      <td>-6.4633</td>
-      <td>-7.1513</td>
-      <td>10.4490</td>
-      <td>116.7370</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>75.1362</td>
-      <td>30.9205</td>
-      <td>3.1611</td>
-      <td>0.3168</td>
-      <td>0.1832</td>
-      <td>-5.5277</td>
-      <td>28.5525</td>
-      <td>21.8393</td>
-      <td>4.6480</td>
-      <td>356.4620</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-```
+|   | fLength  | fWidth   | fSize  | fConc  | fConc1 | fAsym    | fM3Long  | fM3Trans | fAlpha  | fDist    | class |
+|---|----------|----------|--------|--------|--------|----------|----------|----------|---------|----------|-------|
+| 0 | 28.7967  | 16.0021  | 2.6449 | 0.3918 | 0.1982 | 27.7004  | 22.0110  | -8.2027  | 40.0920 | 81.8828  | g     |
+| 1 | 31.6036  | 11.7235  | 2.5185 | 0.5303 | 0.3773 | 26.2722  | 23.8238  | -9.9574  | 6.3609  | 205.2610 | g     |
+| 2 | 162.0520 | 136.0310 | 4.0612 | 0.0374 | 0.0187 | 116.7410 | -64.8580 | -45.2160 | 76.9600 | 256.7880 | g     |
+| 3 | 23.8172  | 9.5728   | 2.3385 | 0.6147 | 0.3922 | 27.2107  | -6.4633  | -7.1513  | 10.4490 | 116.7370 | g     |
+| 4 | 75.1362  | 30.9205  | 3.1611 | 0.3168 | 0.1832 | -5.5277  | 28.5525  | 21.8393  | 4.6480  | 356.4620 | g     |
 
 ## Visualizamos as distribuições
 
