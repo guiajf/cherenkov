@@ -248,7 +248,7 @@ df["class"] = (df["class"] == "g").astype(int)
 df.head()
 ```
 
-::: {.output .execute_result execution_count="4"}
+
 ```{=html}
 <div>
 <style scoped>
@@ -356,38 +356,23 @@ df.head()
 </table>
 </div>
 ```
-:::
-:::
 
-::: {#1190a57e-34a5-4402-834f-dac2c1e7c893 .cell .markdown}
 ## Visualizamos as distribuições
 :::
 
 ::: {#65289c79-d9be-4d49-9e57-dfdf6023efe8 .cell .markdown}
 **Criamos uma matriz de gráficos de dispersão:**
-:::
 
-::: {#599246db-3f56-4225-a8cc-fabe1f32e834 .cell .code execution_count="5"}
 ``` python
 import seaborn as sns
 dados = df.iloc[:, :-1].copy()
 sns.pairplot(data=dados)
 ```
 
-::: {.output .execute_result execution_count="5"}
-    <seaborn.axisgrid.PairGrid at 0x778b3eea8d30>
-:::
-
-::: {.output .display_data}
 ![](vertopal_b542f81007a544e69d706e1b961baf8d/b231f66556e3a8ed62130f3371cc491f9711eb34.png)
-:::
-:::
 
-::: {#1c20c72c-b7af-4f67-bb69-017262a4a114 .cell .markdown}
 **Calculamos a matriz de correlação:**
-:::
 
-::: {#bcddde59-3d2f-4692-aa94-6271fcf33c31 .cell .code execution_count="6"}
 ``` python
 corr = df.drop(labels='class',axis=1).corr()
 sns.heatmap(data=corr,xticklabels=corr.columns,yticklabels=corr.columns,linewidths=0.5,annot=True)
