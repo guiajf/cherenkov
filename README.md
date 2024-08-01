@@ -48,4 +48,15 @@ Ao usar os dados de validação, você pode ajustar hiperparâmetros e seleciona
 
 De outra sorte, para que subdividir o dataset em treinamento, validação e teste?
 
+## Importamos as bilbiotecas
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+from imblearn.over_sampling import RandomOverSampler
+from sklearn.model_selection import train_test_split
+from sklearn.feature_selection import SelectKBest, f_classif
+from sklearn.naive_bayes import GaussianNB
+
 
