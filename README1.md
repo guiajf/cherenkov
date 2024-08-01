@@ -1,4 +1,5 @@
-# Projeto de classificação de dados: modelos, avaliação e desempenho
+# Classificação binária: 
+# *modelos, avaliação e desempenho*
 
 ## Machine Learning
 
