@@ -1,41 +1,14 @@
----
-jupyter:
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
-  language_info:
-    codemirror_mode:
-      name: ipython
-      version: 3
-    file_extension: .py
-    mimetype: text/x-python
-    name: python
-    nbconvert_exporter: python
-    pygments_lexer: ipython3
-    version: 3.10.12
-  nbformat: 4
-  nbformat_minor: 5
----
-
-::: {#bb51866a-5ffb-43fd-9784-be85a50a2987 .cell .markdown}
 # Machine Learning
-:::
 
-::: {#ec96b34f-1138-42f1-8920-5d0c200656be .cell .markdown}
 A plataforma web de aprendizagem interativa
 [freeCodeCamp](https://www.freecodecamp.org/) publicou o excelente curso
 desenvolvido pela engenheira e cientista graduada pelo MIT, [Kylie
 Ying](https://www.kylieying.com/), intitulado **Machine Learning for
 Everybody** -- [Full
 Course](https://www.youtube.com/watch?v=i_LwzRVP7bg).
-:::
 
-::: {#2be7c028-88c9-41ea-80ca-76b3916306e9 .cell .markdown}
 ## Classificação binária
-:::
 
-::: {#8ccffac5-84df-48a5-86d0-845a800f700e .cell .markdown}
 No início do curso, foi abordado um problema de aprendizado
 supervisionado, para classificação binária, em que o modelo aprende com
 dados de treinamento devidamente rotulados, para no fim ser colocado à
