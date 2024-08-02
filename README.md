@@ -551,3 +551,15 @@ suporte de cada classe):
 Esses indicadores mostram que o modelo **RandomForestClassifier** teve um
 bom desempenho, com uma *acurácia* de 87% e valores altos de *precisão*,
 *recall* e *F1-score* para ambas as classes.
+
+
+
+**Referências:**
+
+https://doi.org/10.48550/arXiv.2305.12888
+https://www.eso.org/public/teles-instr/paranal-observatory/ctao/
+https://www.datacamp.com/tutorial/k-nearest-neighbor-classification-scikit-learn
+https://www.datacamp.com/tutorial/random-forests-classifier-python
+
+
+
