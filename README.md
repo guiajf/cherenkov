@@ -552,7 +552,8 @@ Esses indicadores mostram que o modelo **RandomForestClassifier** teve um
 bom desempenho, com uma *acurácia* de 87% e valores altos de *precisão*,
 *recall* e *F1-score* para ambas as classes.
 
-
+<br>
+<br>
 
 **Referências:**
 
