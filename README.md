@@ -556,9 +556,9 @@ bom desempenho, com uma *acurácia* de 87% e valores altos de *precisão*,
 
 **Referências:**
 
-https://doi.org/10.48550/arXiv.2305.12888
-https://www.eso.org/public/teles-instr/paranal-observatory/ctao/
-https://www.datacamp.com/tutorial/k-nearest-neighbor-classification-scikit-learn
+https://doi.org/10.48550/arXiv.2305.12888<br>
+https://www.eso.org/public/teles-instr/paranal-observatory/ctao/<br>
+https://www.datacamp.com/tutorial/k-nearest-neighbor-classification-scikit-learn<br>
 https://www.datacamp.com/tutorial/random-forests-classifier-python
 
 
