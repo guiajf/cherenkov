@@ -281,7 +281,7 @@ print(classification_report(y_valid, y_valid_pred))
 ## Naive Bayes
 
 O Naive Bayes é baseado no teorema de Bayes, que assume independência
-entre os predictores. Este modelo é útil para problemas de classificação
+entre os preditores. Este modelo é útil para problemas de classificação
 binária e multiclasse.
 
 
