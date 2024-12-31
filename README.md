@@ -51,7 +51,7 @@ raios gama interagem com a atmosfera, criando chuvas de partículas
 secundárias. Esse método indireto permite estudar os raios gama de alta
 energia de forma segura e eficaz.
 
-**Radiação Cherenkov**, em homenagem físico russo e soviético, Nobel de
+**Radiação Cherenkov**, em homenagem ao físico russo e soviético, Nobel de
 Física em 1958, *Pavel Alexeevitch Tcherenkov*, é a luz emitida quando
 uma partícula carregada, como um elétron, viaja através de um meio (como
 água ou ar) a uma velocidade superior à velocidade da luz. Este fenômeno
